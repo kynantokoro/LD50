@@ -5,15 +5,18 @@ edition = "2021"
 
 [features]
 default = []
-debug = ["bevy-inspector-egui"]
+debug = ["game_plugin/debug", "bevy-inspector-egui"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 bevy = { version = "0.6" }
-bevy-inspector-egui = { version = "0.8", optional = true }
 bevy_kira_audio = "0.8"
 game_plugin = { path = "game_plugin" }
 
 [workspace]
 members = ["game_plugin"]
+
+[dependencies.bevy-inspector-egui]
+version = "0.8"
+optional = true
