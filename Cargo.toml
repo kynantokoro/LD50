@@ -10,6 +10,5 @@ debug = ["bevy-inspector-egui"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-bevy = { version = "0.5", default-features = false }
-bevy-inspector-egui = { version = "0.6", optional = true }
-bevy_retrograde = "0.2.0"
+bevy = { version = "0.6" }
+bevy-inspector-egui = { version = "0.8", optional = true }
