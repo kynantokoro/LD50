@@ -1,7 +1,14 @@
 use bevy::prelude::*;
+use game_plugin::GamePlugin;
 
 #[cfg(feature = "debug")]
 use bevy_inspector_egui::WorldInspectorPlugin;
+
+#[derive(Debug, Clone, Eq, PartialEq, Hash)]
+pub enum AppState {
+    InGame,
+    Paused,
+}
 
 fn main() {
     let mut app = App::new();
@@ -13,6 +20,10 @@ fn main() {
         ..Default::default()
     })
     // Bevy default plugins
+    .add_state(AppState::InGame)
+    .add_plugin(GamePlugin {
+        running_state: AppState::InGame,
+    })
     .add_plugins(DefaultPlugins);
     #[cfg(feature = "debug")]
     // Debug hierarchy inspector
