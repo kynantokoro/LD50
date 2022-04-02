@@ -12,6 +12,7 @@ pub enum AppState {
 }
 
 fn main() {
+    // println!("{:?}"LifeTile::new_tile('r') );
     let mut app = App::new();
     // Window setup
     app.insert_resource(WindowDescriptor {
