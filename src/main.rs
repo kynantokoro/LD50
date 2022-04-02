@@ -23,8 +23,8 @@ fn main() {
     // Window setup
     app.insert_resource(WindowDescriptor {
         title: "Game".to_string(),
-        width: 700.,
-        height: 800.,
+        width: 256. * 4.,
+        height: 256. * 4.,
         ..Default::default()
     })
     // Bevy default plugins
