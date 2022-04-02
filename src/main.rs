@@ -7,6 +7,7 @@ use bevy_inspector_egui::WorldInspectorPlugin;
 #[derive(Debug, Clone, Eq, PartialEq, Hash)]
 pub enum AppState {
     InGame,
+    UpgradeStore,
     Paused,
 }
 

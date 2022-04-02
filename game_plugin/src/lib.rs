@@ -17,7 +17,7 @@ pub struct GamePlugin<T> {
 impl<T: StateData> Plugin for GamePlugin<T> {
     fn build(&self, app: &mut App) {
         app.add_system_set(
-            SystemSet::on_update(self.running_state.clone()).with_system(Self::test),
+            SystemSet::on_update(self.running_state.clone()).with_system(Self::create_lifemap),
         );
 
         #[cfg(feature = "debug")]
@@ -35,7 +35,22 @@ impl<T: StateData> Plugin for GamePlugin<T> {
 }
 
 impl<T> GamePlugin<T> {
-    pub fn test() {
-        log::info!("hello");
+    pub fn create_lifemap() {
+
+        // TODO
+        // create an 2d array
+        //
+        //
+        //
+        // output [[0, 0, 0, 1], [0, 1, 1, 1], [], []],
+        //
+        // TODO
+        // draw array to console
+        //
+        // itr on the array and spawn tiles
+        //
+        // itr on tiles and spawn walls
+        //
+        // spawn player, goal, enegy, coins
     }
 }
