@@ -573,6 +573,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "bevy_pixel_camera"
+version = "0.1.1"
+source = "git+https://github.com/awalker/bevy_pixel_camera#36f0a98e569d1b6d7116e37d0f641a0c1d1c6c70"
+dependencies = [
+ "bevy",
+]
+
+[[package]]
 name = "bevy_reflect"
 version = "0.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1907,6 +1915,7 @@ dependencies = [
  "bevy",
  "bevy-inspector-egui",
  "bevy_kira_audio",
+ "bevy_pixel_camera",
  "game_plugin",
 ]
 

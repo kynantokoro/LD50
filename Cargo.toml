@@ -13,6 +13,7 @@ debug = ["game_plugin/debug", "bevy-inspector-egui"]
 bevy = { version = "0.6" }
 bevy_kira_audio = "0.8"
 game_plugin = { path = "game_plugin" }
+bevy_pixel_camera = { git = "https://github.com/awalker/bevy_pixel_camera" }
 
 [workspace]
 members = ["game_plugin"]
