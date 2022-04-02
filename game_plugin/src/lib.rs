@@ -2,7 +2,6 @@ pub mod components;
 pub mod resources;
 
 use bevy::ecs::schedule::StateData;
-use bevy::log;
 use bevy::{prelude::*, sprite::SpriteBundle};
 use components::*;
 
@@ -164,14 +163,28 @@ impl<T> GamePlugin<T> {
         println!("{:?}", state);
     }
 
-    pub fn create_shit(mut commands: Commands) {
+    pub fn create_shit(mut commands: Commands, asset_server: Res<AssetServer>) {
         // TODO
         // create walls and player to test collisions
         //
         let board_entity = commands
             .spawn()
-            .insert(Name::new("Root"))
-            .insert(GlobalTransform::default());
+            .insert(Name::new("LifeMap"))
+            .insert(GlobalTransform::default())
+            .with_children(|parent| {
+                parent
+                    .spawn_bundle(SpriteBundle {
+                        texture: asset_server.load("test.png"),
+                        sprite: Sprite {
+                            color: Color::WHITE,
+                            custom_size: Some(Vec2::new(256., 256.)),
+                            ..Default::default()
+                        },
+                        transform: Transform::from_xyz(256. / 2., 256., 0.),
+                        ..Default::default()
+                    })
+                    .insert(Name::new("Background"));
+            });
     }
 
     pub fn update_shit(mut commands: Commands) {

@@ -1,9 +1,13 @@
 use bevy::log;
 use bevy::prelude::*;
+use bevy_pixel_camera::{PixelBorderPlugin, PixelCameraBundle, PixelCameraPlugin};
 use game_plugin::GamePlugin;
 
 #[cfg(feature = "debug")]
 use bevy_inspector_egui::{Inspectable, RegisterInspectable, WorldInspectorPlugin};
+
+const WIDTH: f32 = 256.0;
+const HEIGHT: f32 = 256.0;
 
 #[derive(Debug, Clone, Eq, PartialEq, Hash)]
 pub enum AppState {
@@ -29,10 +33,14 @@ fn main() {
         running_state: AppState::InGame,
     })
     .add_plugins(DefaultPlugins)
+    .add_plugin(PixelCameraPlugin)
+    .add_plugin(PixelBorderPlugin {
+        color: Color::rgb(0.8, 0.1, 0.1),
+    })
+    .insert_resource(ClearColor(Color::rgb(0.0, 0.0, 0.0)))
+    .add_startup_system(setup.system().label("setup"))
     .add_system(state_handler);
 
-    // Startup system (cameras)
-    app.add_startup_system(camera_setup);
     // Debug hierarchy inspector
     #[cfg(feature = "debug")]
     app.add_plugin(WorldInspectorPlugin::new());
@@ -40,9 +48,11 @@ fn main() {
     app.run();
 }
 
-fn camera_setup(mut commands: Commands) {
-    // 2D orthographic camera
-    commands.spawn_bundle(OrthographicCameraBundle::new_2d());
+fn setup(mut commands: Commands, time: Res<Time>) {
+    commands.spawn_bundle(PixelCameraBundle::from_resolution(
+        WIDTH as i32,
+        HEIGHT as i32,
+    ));
 }
 
 fn state_handler(mut state: ResMut<State<AppState>>, keys: Res<Input<KeyCode>>) {}

@@ -575,7 +575,7 @@ dependencies = [
 [[package]]
 name = "bevy_pixel_camera"
 version = "0.1.1"
-source = "git+https://github.com/awalker/bevy_pixel_camera#36f0a98e569d1b6d7116e37d0f641a0c1d1c6c70"
+source = "git+https://github.com/kynantokoro/bevy_pixel_camera#b61f638bac60d759ddd80e18e883dfe4f615a580"
 dependencies = [
  "bevy",
 ]
