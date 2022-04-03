@@ -28,17 +28,17 @@ fn main() {
         ..Default::default()
     })
     // Bevy default plugins
+    .add_plugins(DefaultPlugins)
+    .add_plugin(PixelCameraPlugin)
+    .add_plugin(PixelBorderPlugin {
+        color: Color::rgb(0.1, 0.1, 0.1),
+    })
+    .insert_resource(ClearColor(Color::rgb(0.0, 0.0, 0.0)))
+    .add_startup_system(setup.system().label("setup"))
     .add_state(AppState::InGame)
     .add_plugin(GamePlugin {
         running_state: AppState::InGame,
     })
-    .add_plugins(DefaultPlugins)
-    .add_plugin(PixelCameraPlugin)
-    .add_plugin(PixelBorderPlugin {
-        color: Color::rgb(0.8, 0.1, 0.1),
-    })
-    .insert_resource(ClearColor(Color::rgb(0.0, 0.0, 0.0)))
-    .add_startup_system(setup.system().label("setup"))
     .add_system(state_handler);
 
     // Debug hierarchy inspector

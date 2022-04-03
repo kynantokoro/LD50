@@ -2,10 +2,12 @@ use bevy::prelude::Component;
 use std::fmt::{self, Display, Formatter};
 
 #[cfg_attr(feature = "debug", derive(bevy_inspector_egui::Inspectable))]
-#[derive(Debug, Copy, Clone, Ord, PartialOrd, Eq, PartialEq, Hash, Component)]
+#[derive(Debug, Copy, Clone, PartialOrd, PartialEq, Component)]
 pub struct CollisionBody {
     pub width: u16,
     pub height: u16,
+    pub hsp: f32,
+    pub vsp: f32,
 }
 
 impl Display for CollisionBody {
